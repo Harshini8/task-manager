@@ -1,0 +1,7 @@
+.spinnerDiv {
+    display: flex;
+    flex-direction: column;
+}
+.center-align{
+    text-align: center;
+}

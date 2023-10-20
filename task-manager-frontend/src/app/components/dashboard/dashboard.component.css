@@ -1,0 +1,11 @@
+.header{
+    align-items: center;
+    text-align: center;
+    font-size: large;
+    font-weight: 500;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  

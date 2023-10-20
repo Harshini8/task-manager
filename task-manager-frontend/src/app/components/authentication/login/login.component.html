@@ -1,0 +1,21 @@
+<div class="loginform">
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="username" type="email" required [(ngModel)]="email">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" required [(ngModel)]="password">
+    </mat-form-field> 
+    <br>
+    <button mat-raised-button color="primary" (click)="login()"> Login </button>
+    <mat-error>
+        <div *ngIf="authStatus$ | async as authState">
+            <p *ngIf="!authState.user.success">{{authState.user.message}}</p>
+        </div>
+    </mat-error>
+    <div>
+        <p>Don't have an account? <a routerLink="/authentication/signup">Sign up</a></p>
+    </div>
+</div>

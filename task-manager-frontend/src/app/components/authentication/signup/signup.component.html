@@ -1,0 +1,52 @@
+<form [formGroup]="userRegisterForm" class="signupform">
+    <mat-form-field>
+        <mat-label> Username </mat-label>
+        <input matInput placeholder="username" type="text" required formControlName="username">
+        <p *ngIf="userRegisterForm.controls['username'].dirty &&
+        userRegisterForm.controls['username'].hasError('required')" class="text-danger">Username Field Required 
+        </p>
+        <p *ngIf="userRegisterForm.controls['username'].dirty &&
+             userRegisterForm.controls['username'].hasError('minlength')" class="text-danger">
+            Username must be at least 6 characters long.
+        </p>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label> Password </mat-label>
+        <input matInput placeholder="Password" type="password" required formControlName="password">
+        <p *ngIf="userRegisterForm.controls['password'].dirty &&
+         userRegisterForm.controls['password'].hasError('validPasswordLength')" class="text-danger" >
+            Password must be at least 8 characters long.
+        </p>
+        <p *ngIf="userRegisterForm.controls['password'].dirty &&
+        userRegisterForm.controls['password'].hasError('validPasswordNumber') " class="text-danger" >
+            Password must contain a number.
+        </p>
+        <p *ngIf="userRegisterForm.controls['password'].dirty &&
+        userRegisterForm.controls['password'].hasError('validPasswordSpecialChar') " class="text-danger" >
+            Password must contain a special character.
+        </p>
+        <p *ngIf="userRegisterForm.controls['password'].dirty &&
+        userRegisterForm.controls['password'].hasError('validPasswordUpperCase') " class="text-danger" >
+            Password must contain an uppercase letter.
+        </p>
+    </mat-form-field>
+    <mat-form-field 
+        *ngIf="userRegisterForm.controls['password'].valid"
+    >
+        <mat-label>Confirm Password</mat-label>
+        <input matInput placeholder="Confirm Password" type="password" required formControlName="confirmPassword" >
+        <p *ngIf="userRegisterForm.controls['confirmPassword'].dirty &&
+        userRegisterForm.controls['confirmPassword'].hasError('notMatch')" class="text-danger" >
+            Passwords do not match.
+        </p>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label> Email </mat-label>
+        <input matInput placeholder="Email" type="email" required formControlName="email">
+        <p *ngIf="userRegisterForm.controls['email'].dirty &&
+        userRegisterForm.controls['email'].hasError('email')" class="text-danger" >
+            Email must be a valid email address.
+        </p>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="!userRegisterForm.valid" color="primary" (click)="registerUser()"> Register </button>
+</form>
